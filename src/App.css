@@ -14,23 +14,23 @@ body {
   color: #fff;
 }
 
-.continent-img {
+.country-img {
   display: flex;
   align-items: center;
   border: 5px solid transparent;
 }
 
-.continent-img > img {
+.country-img > img {
   width: 200px;
   height: 200px;
 }
 
-.country-img {
+.state-img {
   width: 150px;
   height: 100px;
 }
 
-.continent-details {
+.country-details {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,11 +43,17 @@ body {
   background-color: #fe5294;
 }
 
-.country-list-container {
+.state-list-container {
   background-color: #bb4b76;
 }
 
-.country-stat {
+.state-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  grid-template-rows: auto 1fr;
+}
+
+.state-stat {
   background-color: #aa4a6f;
   width: 200px;
 }
