@@ -54,6 +54,10 @@ body {
 }
 
 .state-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
   background-color: #aa4a6f;
   width: 200px;
 }
