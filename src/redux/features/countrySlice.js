@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
 import countries from '../../components/countries';
 
 export const reverseGeocodeAsync = createAsyncThunk(
@@ -45,9 +47,42 @@ export const fetchStatesAsync = createAsyncThunk(
     }
 
     const data = await response.json();
-    console.log('states', data);
 
     return data;
+  }
+);
+
+export const fetchGeolocationAsync = createAsyncThunk(
+  'state/fetchGeolocation',
+  async (stateName, { getState }) => {
+    try {
+      const apiKey = '862090a665075dd09b646a7cca4e4e1e';
+      const endpoint = `https://api.openweathermap.org/geo/1.0/direct?q=${stateName}&limit=10&appid=${apiKey}`;
+
+      const response = await axios.get(endpoint);
+      if (response.status === 200) {
+        const { data } = response;
+
+        const selectedCountry = getState().country.countryShortCode;
+        const filteredData = data.find(
+          (item) => item.country === selectedCountry
+        );
+
+
+        if (data && data[0]) {
+          const { lat, lon } = data[0];
+          const { country } = filteredData;
+          const geolocationData = { latitude: lat, longitude: lon, country };
+
+          return geolocationData;
+        }
+        throw new Error('No geolocation data found');
+      } else {
+        throw new Error('Failed to fetch geolocation data');
+      }
+    } catch (error) {
+      throw new Error('Failed to fetch geolocation data');
+    }
   }
 );
 
@@ -60,6 +95,7 @@ const countrySlice = createSlice({
     countryShortCode: '',
     image: null,
     states: [],
+    selectedState: null,
   },
   reducers: {
     setImage: (state, action) => {
@@ -68,6 +104,9 @@ const countrySlice = createSlice({
     setLocation: (state, action) => {
       state.latitude = action.payload.latitude;
       state.longitude = action.payload.longitude;
+    },
+    setSelectedState: (state, action) => {
+      state.selectedState = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -96,9 +135,19 @@ const countrySlice = createSlice({
       .addCase(fetchStatesAsync.rejected, (state, action) => {
         state.fetchStatus = 'failed';
         state.error = action.error.message;
+      })
+      .addCase(fetchGeolocationAsync.pending, (state) => {
+        state.fetchStatus = 'loading';
+      })
+      .addCase(fetchGeolocationAsync.fulfilled, (state, action) => {
+        state.fetchStatus = 'fulfilled';
+        state.selectedState = action.payload;
+      })
+      .addCase(fetchGeolocationAsync.rejected, (state) => {
+        state.fetchStatus = 'failed';
       });
   },
 });
 
-export const { setLocation } = countrySlice.actions;
+export const { setLocation, setSelectedState } = countrySlice.actions;
 export default countrySlice.reducer;
