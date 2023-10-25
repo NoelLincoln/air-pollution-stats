@@ -5,10 +5,49 @@
 }
 
 body {
-  background-color: #4369b2;
+  background-color: #fe5294;
+  color: #fff;
 }
 
 .App-header {
   text-align: center;
   color: #fff;
+}
+
+.continent-img {
+  display: flex;
+  align-items: center;
+  border: 5px solid transparent;
+}
+
+.continent-img > img {
+  width: 200px;
+  height: 200px;
+}
+
+.country-img {
+  width: 150px;
+  height: 100px;
+}
+
+.continent-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 200px;
+  margin: auto;
+  text-align: center;
+  border: 5px solid transparent;
+  background-color: #fe5294;
+}
+
+.country-list-container {
+  background-color: #bb4b76;
+}
+
+.country-stat {
+  background-color: #aa4a6f;
+  width: 200px;
 }
