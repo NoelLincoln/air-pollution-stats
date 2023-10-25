@@ -25,7 +25,29 @@ export const reverseGeocodeAsync = createAsyncThunk(
     const fullName = matchedCountry.name;
     const imageUrl = matchedCountry.flag;
 
-    return { fullName, imageUrl };
+    return { fullName, imageUrl, countryShortName };
+  }
+);
+export const fetchStatesAsync = createAsyncThunk(
+  'country/fetchStates',
+  async (countryShortName) => {
+    const apiKey = 'RWJoWUt3SUtEQXNDSktpUDhIY1VNYTFvTXpSNmxPUjVubUdWV0U3Wg==';
+    const apiEndpoint = `https://api.countrystatecity.in/v1/countries/${countryShortName}/cities`;
+
+    const response = await fetch(apiEndpoint, {
+      headers: {
+        'X-CSCAPI-KEY': apiKey,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch states');
+    }
+
+    const data = await response.json();
+    console.log('states', data);
+
+    return data;
   }
 );
 
@@ -35,7 +57,9 @@ const countrySlice = createSlice({
     latitude: null,
     longitude: null,
     country: null,
+    countryShortCode: '',
     image: null,
+    states: [],
   },
   reducers: {
     setImage: (state, action) => {
@@ -51,12 +75,25 @@ const countrySlice = createSlice({
       .addCase(reverseGeocodeAsync.fulfilled, (state, action) => {
         state.country = action.payload.fullName;
         state.image = action.payload.imageUrl;
+        state.countryShortCode = action.payload.countryShortName.toUpperCase();
       })
       .addCase(reverseGeocodeAsync.pending, (state) => {
         state.fetchStatus = 'loading';
         state.error = null;
       })
       .addCase(reverseGeocodeAsync.rejected, (state, action) => {
+        state.fetchStatus = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(fetchStatesAsync.fulfilled, (state, action) => {
+        state.fetchStatus = 'fulfilled';
+        state.states = action.payload;
+      })
+      .addCase(fetchStatesAsync.pending, (state) => {
+        state.fetchStatus = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchStatesAsync.rejected, (state, action) => {
         state.fetchStatus = 'failed';
         state.error = action.error.message;
       });
