@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   fetchStatesAsync,
   fetchGeolocationAsync,
@@ -39,21 +40,20 @@ const StateList = () => {
         {fetchStatus === 'fulfilled' &&
           states.map((state) => (
             <li key={state.id} className="state-stat">
-              <button
-                type="button"
-                onClick={() => handleStateClick(state)}
-                style={{
-                  border: 'none',
-                  background: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                <img src={image} alt="" className="state-img" />
-                <div>
+              <Link to={`/state/${state.id}`}>
+                <button
+                  type="button"
+                  onClick={() => handleStateClick(state)}
+                  style={{
+                    border: 'none',
+                    background: 'none',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <img src={image} alt="" className="state-img" />
                   <p>{state.name}</p>
-                  <p>{state.population}</p>
-                </div>
-              </button>
+                </button>
+              </Link>
             </li>
           ))}
       </ul>
