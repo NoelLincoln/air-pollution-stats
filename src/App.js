@@ -1,11 +1,12 @@
 import './App.css';
+import HomePage from './components/HomePage';
+import CountryList from './components/CountryList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>2023 stats</h1>
-      </header>
+      <HomePage />
+      <CountryList />
     </div>
   );
 }
