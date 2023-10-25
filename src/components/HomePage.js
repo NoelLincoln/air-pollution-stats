@@ -31,10 +31,10 @@ const HomePage = () => {
 
   return (
     <section className="home-container">
-      <div className="continent">
-        <div className="continent-img">
+      <div className="country">
+        <div className="country-img">
           <img src={image} alt="" />
-          <div className="continent-details">
+          <div className="country-details">
             <h1>{country}</h1>
             <span>4000 views</span>
           </div>
