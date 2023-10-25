@@ -1,12 +1,12 @@
 import './App.css';
 import HomePage from './components/HomePage';
-import CountryList from './components/CountryList';
+import StateList from './components/StateList';
 
 function App() {
   return (
     <div className="App">
       <HomePage />
-      <CountryList />
+      <StateList />
     </div>
   );
 }
