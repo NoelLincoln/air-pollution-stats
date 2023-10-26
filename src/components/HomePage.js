@@ -1,33 +1,44 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setLocation,
   reverseGeocodeAsync,
+  setDataFetched,
 } from '../redux/features/countrySlice';
 
 const HomePage = () => {
-  const { country, image } = useSelector((state) => state.country);
+  const { country, image, isDataFetched } = useSelector(
+    (state) => state.country,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    function successCallback(position) {
-      const { latitude } = position.coords;
-      const { longitude } = position.coords;
+    if (!isDataFetched) {
+      const successCallback = (position) => {
+        const { latitude } = position.coords;
+        const { longitude } = position.coords;
 
-      dispatch(setLocation({ latitude, longitude }));
-      dispatch(reverseGeocodeAsync({ latitude, longitude }));
-    }
+        dispatch(setLocation({ latitude, longitude }));
+        dispatch(reverseGeocodeAsync({ latitude, longitude }));
+        dispatch(setDataFetched(true));
+      };
 
-    function errorCallback(error) {
-      console.error(`Error getting user's location: ${error.message}`);
-    }
+      const errorCallback = (error) => {
+        console.error(`Error getting user's location: ${error.message}`);
+        dispatch(setDataFetched(true));
+      };
 
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    } else {
-      console.error('Geolocation is not available in this browser.');
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          successCallback,
+          errorCallback,
+        );
+      } else {
+        console.error('Geolocation is not available in this browser.');
+        dispatch(setDataFetched(true));
+      }
     }
-  }, [dispatch]);
+  }, [dispatch, isDataFetched]);
 
   return (
     <section className="home-container">
