@@ -4,7 +4,7 @@ import { fetchAirQualityAsync } from '../redux/features/countrySlice';
 
 const StateDetails = () => {
   const { selectedState, airQualityData } = useSelector(
-    (state) => state.country,
+    (state) => state.country
   );
   const dispatch = useDispatch();
 
@@ -31,38 +31,38 @@ const StateDetails = () => {
             {airQualityData.list[0].main.aqi}
           </p>
           <h3>Components:</h3>
-          <ul>
-            <li>
-              CO:
-              {airQualityData.list[0].components.co}
+          <ul className="air-components">
+            <li className="air-components-stat">
+              <p> Carbon monoxide :</p>
+              <p>{airQualityData.list[0].components.co}</p>
             </li>
-            <li>
-              NO:
-              {airQualityData.list[0].components.no}
+            <li className="air-components-stat">
+              <p>Nitrogen monoxide:</p>
+              <p>{airQualityData.list[0].components.no}</p>
             </li>
-            <li>
-              NO2:
-              {airQualityData.list[0].components.no2}
+            <li className="air-components-stat">
+              <p>Nitrogen dioxide:</p>
+              <p>{airQualityData.list[0].components.no2}</p>
             </li>
-            <li>
-              O3:
-              {airQualityData.list[0].components.o3}
+            <li className="air-components-stat">
+              <p> Ozone:</p>
+              <p>{airQualityData.list[0].components.o3}</p>
             </li>
-            <li>
-              SO2:
-              {airQualityData.list[0].components.so2}
+            <li className="air-components-stat">
+              <p>Sulphur dioxide:</p>
+              <p>{airQualityData.list[0].components.so2}</p>
             </li>
-            <li>
-              PM2.5:
-              {airQualityData.list[0].components.pm2_5}
+            <li className="air-components-stat">
+              <p>Fine Particles Matter:</p>
+              <p>{airQualityData.list[0].components.pm2_5}</p>
             </li>
-            <li>
-              PM10:
-              {airQualityData.list[0].components.pm10}
+            <li className="air-components-stat">
+              <p>Coarse particulate matter:</p>
+              <p>{airQualityData.list[0].components.pm10}</p>
             </li>
-            <li>
-              NH3:
-              {airQualityData.list[0].components.nh3}
+            <li className="air-components-stat">
+              <p> Ammonia:</p>
+              <p>{airQualityData.list[0].components.nh3}</p>
             </li>
           </ul>
         </div>
