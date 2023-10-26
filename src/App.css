@@ -9,6 +9,15 @@ body {
   color: #fff;
 }
 
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  padding: 1rem 2rem 1rem 2rem;
+  background-color: #bb4b76;
+}
+
 .App-header {
   text-align: center;
   color: #fff;
@@ -20,7 +29,7 @@ body {
   border: 5px solid transparent;
 }
 
-.country-img > img {
+.world-img > img {
   width: 200px;
   height: 200px;
 }
@@ -47,7 +56,8 @@ body {
   background-color: #bb4b76;
 }
 
-.state-list {
+.state-list,
+.air-components {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
   grid-template-rows: auto 1fr;
@@ -77,4 +87,17 @@ body {
   height: 5rem;
   align-items: center;
   justify-content: center;
+}
+
+.air-components {
+  grid-gap: 0.5rem;
+}
+
+.air-components-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #aa4a6f;
+  height: 8rem;
 }
