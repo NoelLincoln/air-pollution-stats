@@ -61,3 +61,20 @@ body {
   background-color: #aa4a6f;
   width: 200px;
 }
+
+.state-pollution-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 5rem;
+  cursor: pointer;
+}
+
+.state-pollution-data {
+  display: flex;
+  width: 100%;
+  background-color: darkgray;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+}
