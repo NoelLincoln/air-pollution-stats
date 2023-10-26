@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
+import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
 import StateList from './components/StateList';
 import StateDetails from './components/StateDetails';
@@ -14,6 +15,7 @@ function App() {
           path="/"
           element={(
             <>
+              <Navigation />
               <HomePage />
               <StateList />
             </>
