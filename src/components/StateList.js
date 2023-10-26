@@ -7,8 +7,10 @@ import {
 } from '../redux/features/countrySlice';
 
 const StateList = () => {
-  const { countryShortCode, image, states, fetchStatus, error } = useSelector(
-    (state) => state.country
+  const {
+    countryShortCode, image, states, fetchStatus, error,
+  } = useSelector(
+    (state) => state.country,
   );
   const dispatch = useDispatch();
 
@@ -37,8 +39,8 @@ const StateList = () => {
             {error}
           </p>
         )}
-        {fetchStatus === 'fulfilled' &&
-          states.map((state) => (
+        {fetchStatus === 'fulfilled'
+          && states.map((state) => (
             <li key={state.id} className="state-stat">
               <Link to={`/state/${state.id}`}>
                 <button

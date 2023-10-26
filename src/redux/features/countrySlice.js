@@ -8,7 +8,7 @@ export const reverseGeocodeAsync = createAsyncThunk(
   async ({ latitude, longitude }) => {
     const apiKey = '862090a665075dd09b646a7cca4e4e1e';
     const response = await fetch(
-      `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=20&appid=${apiKey}`,
+      `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=20&appid=${apiKey}`
     );
     if (!response.ok) {
       throw new Error('Reverse geocoding failed');
@@ -17,7 +17,7 @@ export const reverseGeocodeAsync = createAsyncThunk(
     const countryShortName = data[0].country.toLowerCase();
 
     const matchedCountry = countries.find(
-      (country) => country.code === countryShortName,
+      (country) => country.code === countryShortName
     );
 
     if (!matchedCountry) {
@@ -28,7 +28,7 @@ export const reverseGeocodeAsync = createAsyncThunk(
     const imageUrl = matchedCountry.flag;
 
     return { fullName, imageUrl, countryShortName };
-  },
+  }
 );
 export const fetchStatesAsync = createAsyncThunk(
   'country/fetchStates',
@@ -49,7 +49,7 @@ export const fetchStatesAsync = createAsyncThunk(
     const data = await response.json();
 
     return data;
-  },
+  }
 );
 
 export const fetchGeolocationAsync = createAsyncThunk(
@@ -65,7 +65,7 @@ export const fetchGeolocationAsync = createAsyncThunk(
 
         const selectedCountry = getState().country.countryShortCode;
         const filteredData = data.find(
-          (item) => item.country === selectedCountry,
+          (item) => item.country === selectedCountry
         );
 
         if (data && data[0]) {
@@ -77,7 +77,6 @@ export const fetchGeolocationAsync = createAsyncThunk(
             stateName,
             country,
           };
-
           return geolocationData;
         }
         throw new Error('No geolocation data found');
@@ -87,7 +86,7 @@ export const fetchGeolocationAsync = createAsyncThunk(
     } catch (error) {
       throw new Error('Failed to fetch geolocation data');
     }
-  },
+  }
 );
 
 export const fetchAirQualityAsync = createAsyncThunk(
@@ -98,16 +97,16 @@ export const fetchAirQualityAsync = createAsyncThunk(
       const endpoint = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
       const response = await axios.get(endpoint);
-
       if (response.status === 200) {
         const airQualityData = response.data;
+
         return airQualityData;
       }
       throw new Error('Failed to fetch air quality data');
     } catch (error) {
       throw new Error('Failed to fetch air quality data');
     }
-  },
+  }
 );
 
 const countrySlice = createSlice({
@@ -119,7 +118,7 @@ const countrySlice = createSlice({
     countryShortCode: '',
     image: null,
     states: [],
-    selectedState: null,
+    selectedState: [],
     airQualityData: null,
     isDataFetched: false,
   },
@@ -188,5 +187,6 @@ const countrySlice = createSlice({
   },
 });
 
-export const { setLocation, setSelectedState, setDataFetched } = countrySlice.actions;
+export const { setLocation, setSelectedState, setDataFetched } =
+  countrySlice.actions;
 export default countrySlice.reducer;
