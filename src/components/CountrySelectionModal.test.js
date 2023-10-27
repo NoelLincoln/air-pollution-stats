@@ -59,7 +59,7 @@ test('calls onSelect and onClose when a country is selected', () => {
   const mockOnClose = jest.fn();
 
   render(
-    <CountrySelectionModal onSelect={mockOnSelect} onClose={mockOnClose} />
+    <CountrySelectionModal onSelect={mockOnSelect} onClose={mockOnClose} />,
   );
 
   const canadaButton = screen.getByRole('button', {

@@ -5,7 +5,7 @@ import { fetchAirQualityAsync } from '../redux/features/countrySlice';
 
 const StateDetails = () => {
   const { selectedState, airQualityData } = useSelector(
-    (state) => state.country
+    (state) => state.country,
   );
   const dispatch = useDispatch();
 
