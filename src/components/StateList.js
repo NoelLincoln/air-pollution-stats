@@ -9,8 +9,10 @@ import {
 } from '../redux/features/countrySlice';
 
 const StateList = () => {
-  const { countryShortCode, image, states, fetchStatus, error } = useSelector(
-    (state) => state.country
+  const {
+    countryShortCode, image, states, fetchStatus, error,
+  } = useSelector(
+    (state) => state.country,
   );
   const dispatch = useDispatch();
 
@@ -73,8 +75,8 @@ const StateList = () => {
       <ul className="state-list">
         {fetchStatus === 'loading' && <p>Loading states...</p>}
         {fetchStatus === 'failed' && <p>{error}</p>}
-        {fetchStatus === 'fulfilled' &&
-          (searchResults.length > 0 ? searchResults : states).map((state) => (
+        {fetchStatus === 'fulfilled'
+          && (searchResults.length > 0 ? searchResults : states).map((state) => (
             <li key={state.id} className="state-stat">
               <div className="arrow-right-cont">
                 <img src={arrowRight} alt="arrow right" />
