@@ -198,3 +198,17 @@ h3 {
 .menu-icon > img {
   width: 14px;
 }
+
+.air-quality-guide-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  align-items: center;
+  border-top: 1px solid;
+  width: 100%;
+  padding: 1rem;
+}
+
+.air-quallity-index-guide {
+  list-style-type: none;
+}
