@@ -21,7 +21,16 @@ function App() {
             </>
           )}
         />
-        <Route path="/state/:id" element={<StateDetails />} />
+        <Route
+          path="/state/:id"
+          element={(
+            <>
+              {' '}
+              <Navigation />
+              <StateDetails />
+            </>
+          )}
+        />
       </Routes>
     </div>
   );

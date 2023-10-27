@@ -47,6 +47,8 @@ const StateList = () => {
   return (
     <section className="state-list-container">
       <div className="search-box">
+        <h4>Stats By State</h4>
+
         <input
           type="text"
           placeholder="Search for a state"
@@ -61,16 +63,7 @@ const StateList = () => {
           ))}
         </ul>
       </div>
-      <div className="selected-state">
-        {selectedState && (
-          <div>
-            <h2>Selected State</h2>
-            <p>State Name: {selectedState.name}</p>
-            {/* Display other state details here */}
-          </div>
-        )}
-      </div>
-      <h4>Stats By State</h4>
+
       <ul className="state-list">
         {fetchStatus === 'loading' && <p>Loading states...</p>}
         {fetchStatus === 'failed' && <p>Error: {error}</p>}

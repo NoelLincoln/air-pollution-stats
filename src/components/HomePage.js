@@ -103,7 +103,7 @@ const HomePage = () => {
               <br />
               States
             </span>
-            <button type="button" onClick={openCountrySelectionModal}>
+            <button type="button" onClick={openCountrySelectionModal} className="change-country-btn">
               Change country
             </button>
           </div>

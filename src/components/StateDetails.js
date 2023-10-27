@@ -16,20 +16,25 @@ const StateDetails = () => {
   }, [selectedState, dispatch]);
 
   return (
-    <div>
-      <h1>State Details</h1>
-      <p>
-        State Name:
-        {selectedState?.stateName}
-      </p>
+    <section className="state-air-info">
+      <div className="state-air-details">
+        <h1>State Details</h1>
+        <p>
+          Name:
+          {selectedState?.stateName}
+        </p>
+      </div>
 
       {airQualityData ? (
         <div>
-          <h2>Air Quality Data</h2>
-          <p>
-            Air Quality Index (AQI):
-            {airQualityData.list[0].main.aqi}
-          </p>
+          <div className="air-quality-index">
+            <h2>Air Quality Data</h2>
+            <p>
+              Air Quality Index (AQI):
+              {airQualityData.list[0].main.aqi}
+            </p>
+          </div>
+
           <h3>Components:</h3>
           <ul className="air-components">
             <li className="air-components-stat">
@@ -69,7 +74,7 @@ const StateDetails = () => {
       ) : (
         <p>Loading air quality data...</p>
       )}
-    </div>
+    </section>
   );
 };
 
