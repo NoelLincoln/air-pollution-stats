@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import worldimg from '../images/world-globe.gif';
 import CountrySelectionModal from './CountrySelectionModal';
+import CountriesArray from './countries';
 
 import {
   setLocation,
@@ -14,11 +15,12 @@ import {
   setStates,
   setCountry,
   setCountryShortCode,
+  setCountryFlag,
 } from '../redux/features/countrySlice';
 import 'leaflet/dist/leaflet.css';
 
 const HomePage = () => {
-  const { country, image, isDataFetched, states, countries } = useSelector(
+  const { country, isDataFetched, states, countries } = useSelector(
     (state) => state.country
   );
   const dispatch = useDispatch();
@@ -70,13 +72,23 @@ const HomePage = () => {
   };
 
   const handleCountrySelect = (selectedCountry) => {
-    const newCountryShortCode = selectedCountry.iso2;
+    const newCountryShortCode = selectedCountry.iso2.toLowerCase();
 
     dispatch(setCountry([selectedCountry]));
-
     dispatch(setCountry(selectedCountry.name));
-
     dispatch(setCountryShortCode(newCountryShortCode));
+
+    const matchedCountry = CountriesArray.find(
+      (country) => country.code === newCountryShortCode
+    );
+
+    if (matchedCountry) {
+      const flagUrl = matchedCountry.flag;
+
+      dispatch(setCountryFlag(flagUrl));
+    } else {
+      console.error('Country not found in the countries data');
+    }
 
     dispatch(fetchStatesAsync(newCountryShortCode)).then((result) => {
       if (fetchStatesAsync.fulfilled.match(result)) {
@@ -103,7 +115,11 @@ const HomePage = () => {
               <br />
               States
             </span>
-            <button type="button" onClick={openCountrySelectionModal} className="change-country-btn">
+            <button
+              type="button"
+              onClick={openCountrySelectionModal}
+              className="change-country-btn"
+            >
               Change country
             </button>
           </div>
