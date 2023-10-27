@@ -51,7 +51,7 @@ describe('Redux Slice Async Thunks', () => {
     const dispatch = jest.fn();
     await reverseGeocodeAsync({ latitude: 0, longitude: 0 })(
       dispatch,
-      getState
+      getState,
     );
 
     const expectedAction = {
@@ -86,7 +86,7 @@ describe('Redux Slice Async Thunks', () => {
       expect.objectContaining({
         type: fetchStatesAsync.fulfilled.type,
         payload: [{ name: 'State1' }, { name: 'State2' }],
-      })
+      }),
     );
   });
 
@@ -119,7 +119,7 @@ describe('Redux Slice Async Thunks', () => {
           stateName: 'StateName',
           country: 'US',
         },
-      })
+      }),
     );
   });
 
@@ -138,7 +138,7 @@ describe('Redux Slice Async Thunks', () => {
       expect.objectContaining({
         type: fetchAirQualityAsync.fulfilled.type,
         payload: { airQuality: 'good' },
-      })
+      }),
     );
   });
 });
