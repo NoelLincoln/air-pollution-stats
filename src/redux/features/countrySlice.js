@@ -117,7 +117,7 @@ export const fetchAirQualityAsync = createAsyncThunk(
   async ({ latitude, longitude }) => {
     try {
       const apiKey = '862090a665075dd09b646a7cca4e4e1e';
-      const endpoint = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+      const endpoint = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
       const response = await axios.get(endpoint);
       if (response.status === 200) {
