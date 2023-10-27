@@ -72,14 +72,14 @@ const HomePage = () => {
   };
 
   const handleCountrySelect = (selectedCountry) => {
-    const newCountryShortCode = selectedCountry.iso2.toLowerCase();
+    const newCountryShortCode = selectedCountry.iso2;
 
     dispatch(setCountry([selectedCountry]));
     dispatch(setCountry(selectedCountry.name));
     dispatch(setCountryShortCode(newCountryShortCode));
 
     const matchedCountry = CountriesArray.find(
-      (country) => country.code === newCountryShortCode
+      (country) => country.code === newCountryShortCode.toLowerCase()
     );
 
     if (matchedCountry) {
