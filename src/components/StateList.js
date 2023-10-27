@@ -75,7 +75,6 @@ const StateList = () => {
         {fetchStatus === 'loading' && <p>Loading states...</p>}
         {fetchStatus === 'failed' && (
           <p>
-            Error:
             {error}
           </p>
         )}
