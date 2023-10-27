@@ -74,6 +74,18 @@ const StateDetails = () => {
       ) : (
         <p>Loading air quality data...</p>
       )}
+      <section className="air-quality-guide-container">
+        <div>
+          <p>Air Quality Index guide</p>
+        </div>
+        <ul className="air-quallity-index-guide">
+          <li> 1 = Good</li>
+          <li>2 = Fair</li>
+          <li>3 = Moderate</li>
+          <li> 4 = Poor</li>
+          <li>5 = Very Poor</li>
+        </ul>
+      </section>
     </section>
   );
 };
