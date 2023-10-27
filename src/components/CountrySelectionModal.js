@@ -1,9 +1,7 @@
-// CountrySelectionModal.js
-
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useSelector } from 'react-redux';
 
 const CountrySelectionModal = ({ onSelect, onClose }) => {
   const [searchText, setSearchText] = useState('');
@@ -14,10 +12,9 @@ const CountrySelectionModal = ({ onSelect, onClose }) => {
     onClose();
   };
 
-  const filteredCountries = countries.filter((country) =>
-    country.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-
+  const searchTextLowerCase = searchText.toLowerCase();
+  // eslint-disable-next-line max-len
+  const filteredCountries = countries.filter((country) => country.name.toLowerCase().includes(searchTextLowerCase));
   return (
     <div className="country-selection-modal">
       <input
@@ -26,21 +23,25 @@ const CountrySelectionModal = ({ onSelect, onClose }) => {
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      <ul>
+      <div className="list-countries">
         {filteredCountries.map((country) => (
-          <li key={country.code} onClick={() => handleSelectCountry(country)}>
+          <button
+            type="button"
+            key={country.code}
+            onClick={() => handleSelectCountry(country)}
+          >
             {country.name}
             {country.code}
-          </li>
+          </button>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
 CountrySelectionModal.propTypes = {
-  onSelect: PropTypes.func.isRequired, // 'onSelect' should be a function and is required
-  onClose: PropTypes.func.isRequired, // 'onClose' should be a function and is required
+  onSelect: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default CountrySelectionModal;
