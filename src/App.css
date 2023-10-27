@@ -190,3 +190,11 @@ input[type='text'] {
 h3 {
   padding-left: 2rem;
 }
+
+.arrow-back img {
+  width: 14px;
+}
+
+.menu-icon > img {
+  width: 14px;
+}
