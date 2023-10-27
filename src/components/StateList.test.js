@@ -35,7 +35,7 @@ test('renders StateList component', () => {
   render(
     <MemoryRouter>
       <StateList />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   const stateListContainer = screen.getByText('Stats By State');
@@ -57,7 +57,7 @@ test('displays "Loading states..." while fetching data', () => {
   render(
     <MemoryRouter>
       <StateList />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   const loadingText = screen.getByText('Loading states...');
@@ -81,7 +81,7 @@ test('displays an error message when there is a fetch failure', () => {
   render(
     <MemoryRouter>
       <StateList />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   const errorText = screen.getByText('An error occurred');
@@ -107,7 +107,7 @@ test('displays the list of states when data is available', () => {
   render(
     <MemoryRouter>
       <StateList />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   const state1 = screen.getByText('State1');

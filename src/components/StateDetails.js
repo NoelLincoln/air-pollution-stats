@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAirQualityAsync } from '../redux/features/countrySlice';
 
 const StateDetails = () => {
   const { selectedState, airQualityData } = useSelector(
-    (state) => state.country,
+    (state) => state.country
   );
   const dispatch = useDispatch();
 
@@ -28,10 +29,7 @@ const StateDetails = () => {
         <div>
           <div className="air-quality-index">
             <h2>Air Quality Data</h2>
-            <p>
-              Air Quality Index (AQI):
-              {airQualityData.list[0].main.aqi}
-            </p>
+            <p>Air Quality Index (AQI): {airQualityData.list[0].main.aqi}</p>
           </div>
 
           <h3>Components:</h3>
