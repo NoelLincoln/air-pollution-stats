@@ -5,10 +5,11 @@ import {
   fetchStatesAsync,
   fetchGeolocationAsync,
   setSelectedState,
+  
 } from '../redux/features/countrySlice';
 
 const StateList = () => {
-  const { countryShortCode, image, states, fetchStatus, error, selectedState } =
+  const { countryShortCode, image, states, fetchStatus, error } =
     useSelector((state) => state.country);
   const dispatch = useDispatch();
 
