@@ -131,6 +131,7 @@ export const setCountry = createAction('country/setCountry');
 export const setStates = createAction('country/setStates');
 export const clearCountry = createAction('country/clearCountry');
 export const setCountryShortCode = createAction('country/setCountryShortCode');
+export const setCountryFlag = createAction('country/setCountryFlag');
 
 const countrySlice = createSlice({
   name: 'country',
@@ -175,6 +176,9 @@ const countrySlice = createSlice({
     },
     setCountryShortCode: (state, action) => {
       state.countryShortCode = action.payload;
+    },
+    setCountryFlag: (state, action) => {
+      state.image = action.payload;
     },
   },
   extraReducers: (builder) => {
