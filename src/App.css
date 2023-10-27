@@ -131,11 +131,23 @@ button {
 
 .state-stat {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #aa4a6f;
   width: 200px;
+}
+
+.arrow-right-cont {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+.arrow-right-cont > img {
+  width: 15px;
+  height: 15px;
 }
 
 .state-pollution-container {

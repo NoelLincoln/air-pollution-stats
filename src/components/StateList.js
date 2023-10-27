@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import arrowRight from '../images/arrow-right.png';
 import {
   fetchStatesAsync,
   fetchGeolocationAsync,
@@ -8,10 +9,8 @@ import {
 } from '../redux/features/countrySlice';
 
 const StateList = () => {
-  const {
-    countryShortCode, image, states, fetchStatus, error,
-  } = useSelector(
-    (state) => state.country,
+  const { countryShortCode, image, states, fetchStatus, error } = useSelector(
+    (state) => state.country
   );
   const dispatch = useDispatch();
 
@@ -73,14 +72,13 @@ const StateList = () => {
 
       <ul className="state-list">
         {fetchStatus === 'loading' && <p>Loading states...</p>}
-        {fetchStatus === 'failed' && (
-          <p>
-            {error}
-          </p>
-        )}
-        {fetchStatus === 'fulfilled'
-          && (searchResults.length > 0 ? searchResults : states).map((state) => (
+        {fetchStatus === 'failed' && <p>{error}</p>}
+        {fetchStatus === 'fulfilled' &&
+          (searchResults.length > 0 ? searchResults : states).map((state) => (
             <li key={state.id} className="state-stat">
+              <div className="arrow-right-cont">
+                <img src={arrowRight} alt="arrow right" />
+              </div>
               <Link to={`/state/${state.id}`}>
                 <button
                   type="button"
