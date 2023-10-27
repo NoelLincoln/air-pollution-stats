@@ -6,21 +6,25 @@ import countries from '../../components/countries';
 export const fetchCountriesAsync = createAsyncThunk(
   'country/fetchCountries',
   async () => {
-    const apiKey = 'RWJoWUt3SUtEQXNDSktpUDhIY1VNYTFvTXpSNmxPUjVubUdWV0U3Wg==';
-    const apiEndpoint = 'https://api.countrystatecity.in/v1/countries';
-    const response = await fetch(apiEndpoint, {
-      headers: {
-        'X-CSCAPI-KEY': apiKey,
-      },
-    });
+    try {
+      const apiKey = 'RWJoWUt3SUtEQXNDSktpUDhIY1VNYTFvTXpSNmxPUjVubUdWV0U3Wg==';
+      const apiEndpoint = 'https://api.countrystatecity.in/v1/countries';
+      const response = await fetch(apiEndpoint, {
+        headers: {
+          'X-CSCAPI-KEY': apiKey,
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error('Failed to fetch states');
+      if (!response.ok) {
+        throw new Error('Failed to fetch countries');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error('An error occurred while fetching countries:', error);
     }
-
-    const data = await response.json();
-    return data;
-  }
+  },
 );
 
 export const reverseGeocodeAsync = createAsyncThunk(
@@ -28,7 +32,7 @@ export const reverseGeocodeAsync = createAsyncThunk(
   async ({ latitude, longitude }) => {
     const apiKey = '862090a665075dd09b646a7cca4e4e1e';
     const response = await fetch(
-      `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=20&appid=${apiKey}`
+      `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=20&appid=${apiKey}`,
     );
     if (!response.ok) {
       throw new Error('Reverse geocoding failed');
@@ -37,7 +41,7 @@ export const reverseGeocodeAsync = createAsyncThunk(
     const countryShortName = data[0].country.toLowerCase();
 
     const matchedCountry = countries.find(
-      (country) => country.code === countryShortName
+      (country) => country.code === countryShortName,
     );
 
     if (!matchedCountry) {
@@ -48,7 +52,7 @@ export const reverseGeocodeAsync = createAsyncThunk(
     const imageUrl = matchedCountry.flag;
 
     return { fullName, imageUrl, countryShortName };
-  }
+  },
 );
 export const fetchStatesAsync = createAsyncThunk(
   'country/fetchStates',
@@ -68,7 +72,7 @@ export const fetchStatesAsync = createAsyncThunk(
 
     const data = await response.json();
     return data;
-  }
+  },
 );
 
 export const fetchGeolocationAsync = createAsyncThunk(
@@ -84,7 +88,7 @@ export const fetchGeolocationAsync = createAsyncThunk(
 
         const selectedCountry = getState().country.countryShortCode;
         const filteredData = data.find(
-          (item) => item.country === selectedCountry
+          (item) => item.country === selectedCountry,
         );
 
         if (data && data[0]) {
@@ -105,7 +109,7 @@ export const fetchGeolocationAsync = createAsyncThunk(
     } catch (error) {
       throw new Error('Failed to fetch geolocation data');
     }
-  }
+  },
 );
 
 export const fetchAirQualityAsync = createAsyncThunk(
@@ -125,7 +129,7 @@ export const fetchAirQualityAsync = createAsyncThunk(
     } catch (error) {
       throw new Error('Failed to fetch air quality data');
     }
-  }
+  },
 );
 export const setCountry = createAction('country/setCountry');
 export const setStates = createAction('country/setStates');
