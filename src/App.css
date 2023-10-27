@@ -16,10 +16,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  color: white;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
   background-color: #fe5294;
   color: #fff;
 }
@@ -56,6 +57,19 @@ p {
 .state-img {
   width: 150px;
   height: 100px;
+}
+
+.list-countries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 16rem;
+  overflow-y: scroll;
+}
+
+.list-countries button {
+  width: 80%;
+  margin: auto;
 }
 
 .country-details {
@@ -151,6 +165,18 @@ p {
   font-size: 16px;
 }
 
+button {
+  background-color: #d28fc2;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 .search-box {
   padding: 1rem 1.5rem;
   align-items: center;
@@ -164,6 +190,7 @@ input[type='text'] {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  color: black;
 }
 
 .state-air-details {
