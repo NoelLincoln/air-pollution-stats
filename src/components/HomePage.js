@@ -17,11 +17,12 @@ import {
   setCountryShortCode,
   setCountryFlag,
 } from '../redux/features/countrySlice';
-import 'leaflet/dist/leaflet.css';
 
 const HomePage = () => {
-  const { country, isDataFetched, states, countries } = useSelector(
-    (state) => state.country
+  const {
+    country, isDataFetched, states, countries,
+  } = useSelector(
+    (state) => state.country,
   );
   const dispatch = useDispatch();
 
@@ -40,17 +41,17 @@ const HomePage = () => {
       };
 
       const errorCallback = (error) => {
-        console.error(`Error getting user's location: ${error.message}`);
         dispatch(setDataFetched(true));
+
+        throw new Error(`Error getting user's location: ${error.message}`);
       };
 
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
           successCallback,
-          errorCallback
+          errorCallback,
         );
       } else {
-        console.error('Geolocation is not available in this browser.');
         dispatch(setDataFetched(true));
       }
     }
@@ -62,7 +63,7 @@ const HomePage = () => {
         dispatch(setCountriesList(result.payload));
         setIsModalOpen(true);
       } else {
-        console.error('Failed to fetch countries');
+        throw new Error('Failed to fetch countries');
       }
     });
   };
@@ -79,7 +80,7 @@ const HomePage = () => {
     dispatch(setCountryShortCode(newCountryShortCode));
 
     const matchedCountry = CountriesArray.find(
-      (country) => country.code === newCountryShortCode.toLowerCase()
+      (country) => country.code === newCountryShortCode.toLowerCase(),
     );
 
     if (matchedCountry) {
@@ -87,14 +88,14 @@ const HomePage = () => {
 
       dispatch(setCountryFlag(flagUrl));
     } else {
-      console.error('Country not found in the countries data');
+      throw new Error('Country not found in the countries data');
     }
 
     dispatch(fetchStatesAsync(newCountryShortCode)).then((result) => {
       if (fetchStatesAsync.fulfilled.match(result)) {
         dispatch(setStates(result.payload));
       } else {
-        console.error('Failed to fetch states for the selected country');
+        throw new Error('Failed to fetch states for the selected country');
       }
     });
 
@@ -111,7 +112,7 @@ const HomePage = () => {
           <div className="country-details">
             <h1>{country}</h1>
             <span>
-              {states.length}
+              {states ? states.length : 0}
               <br />
               States
             </span>
