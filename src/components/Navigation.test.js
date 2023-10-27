@@ -8,7 +8,7 @@ test('renders Navigation component', () => {
   render(
     <Router>
       <Navigation />
-    </Router>
+    </Router>,
   );
 
   const navigationComponent = screen.getByText('Air Pollution Stats');
@@ -21,7 +21,7 @@ test('does not render "Go Back" button on the homepage', () => {
   render(
     <Router location={location}>
       <Navigation />
-    </Router>
+    </Router>,
   );
 
   const goBackButton = screen.queryByAltText('Go Back');
@@ -34,7 +34,7 @@ test('renders correctly on the homepage', () => {
   render(
     <Router location={location}>
       <Navigation />
-    </Router>
+    </Router>,
   );
 
   const goBackButton = screen.queryByAltText('Go Back');
@@ -45,7 +45,7 @@ test('renders the title correctly', () => {
   render(
     <Router>
       <Navigation />
-    </Router>
+    </Router>,
   );
 
   const title = screen.getByText('Air Pollution Stats');
@@ -56,7 +56,7 @@ test('renders the menu icon', () => {
   render(
     <Router>
       <Navigation />
-    </Router>
+    </Router>,
   );
 
   const menuIcon = screen.getByAltText('Menu');

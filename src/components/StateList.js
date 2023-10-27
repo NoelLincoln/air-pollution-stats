@@ -5,12 +5,14 @@ import {
   fetchStatesAsync,
   fetchGeolocationAsync,
   setSelectedState,
-  
 } from '../redux/features/countrySlice';
 
 const StateList = () => {
-  const { countryShortCode, image, states, fetchStatus, error } =
-    useSelector((state) => state.country);
+  const {
+    countryShortCode, image, states, fetchStatus, error,
+  } = useSelector(
+    (state) => state.country,
+  );
   const dispatch = useDispatch();
 
   const [searchText, setSearchText] = useState('');
@@ -58,18 +60,27 @@ const StateList = () => {
         />
         <ul>
           {searchResults.map((state) => (
-            <li key={state.id} onClick={() => handleStateSelection(state)}>
+            <button
+              type="button"
+              key={state.id}
+              onClick={() => handleStateSelection(state)}
+            >
               {state.name}
-            </li>
+            </button>
           ))}
         </ul>
       </div>
 
       <ul className="state-list">
         {fetchStatus === 'loading' && <p>Loading states...</p>}
-        {fetchStatus === 'failed' && <p>Error: {error}</p>}
-        {fetchStatus === 'fulfilled' &&
-          (searchResults.length > 0 ? searchResults : states).map((state) => (
+        {fetchStatus === 'failed' && (
+          <p>
+            Error:
+            {error}
+          </p>
+        )}
+        {fetchStatus === 'fulfilled'
+          && (searchResults.length > 0 ? searchResults : states).map((state) => (
             <li key={state.id} className="state-stat">
               <Link to={`/state/${state.id}`}>
                 <button

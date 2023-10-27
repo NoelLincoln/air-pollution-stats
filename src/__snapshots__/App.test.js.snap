@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <div
+      class="nav"
+    >
+      <div
+        class="empty-div"
+      />
+      <div>
+        <h2>
+          Air Pollution Stats
+        </h2>
+      </div>
+      <div
+        class="menu-icon"
+      >
+        <img
+          alt="Menu"
+          src="menu-icon.png"
+        />
+      </div>
+    </div>
+    <section
+      class="home-container"
+    >
+      <div
+        class="country"
+      >
+        <div
+          class="country-img"
+        >
+          <div
+            class="world-img"
+          >
+            <img
+              alt=""
+              src="world-globe.gif"
+            />
+          </div>
+          <div
+            class="country-details"
+          >
+            <h1 />
+            <span>
+              0
+              <br />
+              States
+            </span>
+            <button
+              class="change-country-btn"
+              type="button"
+            >
+              Change country
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="state-list-container"
+    >
+      <div
+        class="search-box"
+      >
+        <h4>
+          Stats By State
+        </h4>
+        <input
+          placeholder="Search for a state"
+          type="text"
+          value=""
+        />
+        <ul />
+      </div>
+      <ul
+        class="state-list"
+      />
+    </section>
+  </div>
+</DocumentFragment>
+`;
