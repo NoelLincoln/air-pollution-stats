@@ -120,9 +120,9 @@ button {
 }
 
 .state-list > li {
-  flex: 0 0 calc(50% - 16px); /* Adjust the width as needed */
+  flex: 0 0 calc(50% - 0px);
   background-color: #aa4a6f;
-  margin-bottom: 16px; /* Adjust the margin as needed */
+  margin-bottom: 16px;
 }
 
 .state-list li:nth-child(4n - 3),
