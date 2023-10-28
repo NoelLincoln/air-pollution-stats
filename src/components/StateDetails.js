@@ -5,7 +5,7 @@ import { fetchAirQualityAsync } from '../redux/features/countrySlice';
 
 const StateDetails = () => {
   const { selectedState, airQualityData } = useSelector(
-    (state) => state.country,
+    (state) => state.country
   );
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ const StateDetails = () => {
             <p>Air Quality Index (AQI): {airQualityData.list[0].main.aqi}</p>
           </div>
 
-          <h3>Components:</h3>
+          <h3>Components in μg/m3:</h3>
           <ul className="air-components">
             <li className="air-components-stat">
               <p> Carbon monoxide :</p>

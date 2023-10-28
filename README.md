@@ -65,7 +65,7 @@
 
 ## 📹  Video Presentation <a name="live-demo"></a>
 
-- [Video link](https://air-pollution-stats.onrender.com/)
+- [Video link](https://www.loom.com/share/d116f09749be4a0cbee5227913684155)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
