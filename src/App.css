@@ -251,3 +251,9 @@ h3 {
 .air-quallity-index-guide {
   list-style-type: none;
 }
+
+.statenamelist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

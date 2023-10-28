@@ -92,7 +92,10 @@ const StateList = () => {
                   }}
                 >
                   <img src={image} alt="" className="state-img" />
-                  <p>{state.name}</p>
+                  <div className="statenamelist">
+                    <p>{state.name}</p>
+                    {state.id}
+                  </div>
                 </button>
               </Link>
             </li>
