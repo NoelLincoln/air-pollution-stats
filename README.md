@@ -1,5 +1,7 @@
 <a name="readme-top"></a>
 
+<img src="./public/logo.PNG">
+
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
@@ -50,7 +52,8 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Mobile version**
+- SPA - Sigle Page Application
+- User Friendly
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -58,7 +61,11 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://noellincoln.github.io/air-pollution-stats)
+- [Live Demo Link](https://air-pollution-stats.onrender.com/)
+
+## 📹 Video Presentation <a name="live-demo"></a>
+
+- [Video link](https://www.loom.com/share/d116f09749be4a0cbee5227913684155)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -70,38 +77,65 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
+In order to set up and run the application you need:
+
+- A code editor preferably Visual Studio Code
+- A web browser preferably Google chrome.
+
+Basic requirements are needed in order to fully understand how the project fully works :
+
+- Basic knowledge of HTML, CSS, and React.
+- Intermediate knowledge of React-Redux
+- How to work with Git and GitHub.
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-https://github.com/NoelLincoln/air-pollution-stats
+```sh
+  cd my-folder
+  git clone https://github.com/NoelLincoln/air-pollution-stats/
+```
 
 ### Install
 
-Run
+Install this project with:
 
-> npm install
+```sh
+  cd air-pollution-stats
+  npm install
+```
 
 ### Usage
 
-To run the project:
+To run the project run :
 
-> Open the directory in a code editor(vscode)
+```sh
+  npm start
+```
 
-> Install live server extension</li>
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in your browser.
 
-> Right click index.html and open with live server
+The page will reload when you make changes.
+You may also see any lint errors in the console
 
 ### Run tests
 
-To run tests:
+To run tests, run the following command:
 
-> npx stylelint "\*_/_.{css,scss}"
+```sh
+  npm test
+```
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### Deployment
+
+This project can be deployed on several platforms. Github pages is used for deployment. For detailed steps visit [deploy create-react-app](https://create-react-app.dev/docs/deployment/#github-pages).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
@@ -147,6 +181,10 @@ If you like this project give a ⭐️
 
 I would like to thank Microverse a lot
 
+I would like to acknowledge [Nelson Sakwa](https://www.behance.net/sakwadesignstudio), the original creator of this design
+
+I would like to thank [freepik](https://freepik.com/) forallowing me to use their icons
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
@@ -156,4 +194,3 @@ I would like to thank Microverse a lot
 This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-```
