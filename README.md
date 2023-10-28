@@ -52,7 +52,8 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Mobile version**
+- SPA - Sigle Page Application
+- User Friendly
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -62,8 +63,7 @@
 
 - [Live Demo Link](https://air-pollution-stats.onrender.com/)
 
-
-## 📹  Video Presentation <a name="live-demo"></a>
+## 📹 Video Presentation <a name="live-demo"></a>
 
 - [Video link](https://www.loom.com/share/d116f09749be4a0cbee5227913684155)
 
@@ -181,6 +181,10 @@ If you like this project give a ⭐️
 
 I would like to thank Microverse a lot
 
+I would like to acknowledge [Nelson Sakwa](https://www.behance.net/sakwadesignstudio), the original creator of this design
+
+I would like to thank [freepik](https://freepik.com/) forallowing me to use their icons
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
@@ -190,4 +194,3 @@ I would like to thank Microverse a lot
 This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-```
