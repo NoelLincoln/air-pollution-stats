@@ -72,7 +72,6 @@ button {
   border: none;
   border-radius: 5px;
   color: white;
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -121,7 +120,9 @@ button {
 }
 
 .state-list > li {
-  flex: 50%;
+  flex: 0 0 calc(50% - 16px); /* Adjust the width as needed */
+  background-color: #aa4a6f;
+  margin-bottom: 16px; /* Adjust the margin as needed */
 }
 
 .state-list li:nth-child(4n - 3),
