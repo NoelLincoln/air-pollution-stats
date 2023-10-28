@@ -25,7 +25,7 @@ const StateDetails = () => {
       </div>
 
       {airQualityData ? (
-        <div>
+        <div className="air-quality-index-cont">
           <div className="air-quality-index">
             <h2>Air Quality Data</h2>
             <p>

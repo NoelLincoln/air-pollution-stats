@@ -106,7 +106,6 @@ button {
 }
 
 .state-list,
-.air-components,
 .search-box {
   display: flex;
   width: 100%;
@@ -114,8 +113,9 @@ button {
 }
 
 .air-components {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 1rem;
   margin-top: 2rem;
 }
 
@@ -168,14 +168,22 @@ button {
   justify-content: center;
 }
 
+.air-quality-index-cont {
+  width: 100%;
+}
+
 .air-components-stat {
   display: flex;
-  width: 40%;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
   background-color: #aa4a6f;
-  height: 8rem;
+  height: 5rem;
+  padding: 0 1rem;
+}
+
+.air-components-stat:nth-child(even) {
+  background-color: #bb4b76;
 }
 
 .change-country-btn {
